@@ -1,4 +1,10 @@
-﻿namespace LanchesMac;
+﻿using LanchesMac.Context;
+using LanchesMac.Repositories;
+using LanchesMac.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using System;
+
+namespace LanchesMac;
 public class Startup
 {
     public Startup(IConfiguration configuration)
@@ -11,6 +17,14 @@ public class Startup
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+        services.AddControllersWithViews();
+        services.AddDbContext<AppDbContext>(options =>
+                options.UseMySql(Configuration.GetConnectionString("CDPContext"),
+                    ServerVersion.Parse("8.0.27-mysql")));
+
+        services.AddTransient<ILancheRepository, LancheRepository>();
+        services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+
         services.AddControllersWithViews();
     }
 
