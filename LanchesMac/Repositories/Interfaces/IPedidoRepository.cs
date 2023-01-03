@@ -2,7 +2,7 @@
 
 namespace LanchesMac.Repositories.Interfaces
 {
-    public interface IPedidioRepository
+    public interface IPedidoRepository
     {
         void CriarPedido(Pedido pedido);
     }

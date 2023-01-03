@@ -18,14 +18,14 @@ public class Startup
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddControllersWithViews();
         services.AddDbContext<AppDbContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("CDPContext"),
                     ServerVersion.Parse("8.0.27-mysql")));
 
         services.AddTransient<ILancheRepository, LancheRepository>();
         services.AddTransient<ICategoriaRepository, CategoriaRepository>();
-        services.AddSingleton<IPedidioRepository, PedidoRepository>();
+        services.AddTransient<IPedidoRepository, PedidoRepository>();
+
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
 

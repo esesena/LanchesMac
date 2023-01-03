@@ -1,11 +1,10 @@
 ﻿using LanchesMac.Context;
 using LanchesMac.Models;
 using LanchesMac.Repositories.Interfaces;
-using System.Runtime.InteropServices;
 
 namespace LanchesMac.Repositories
 {
-    public class PedidoRepository : IPedidioRepository
+    public class PedidoRepository : IPedidoRepository
     {
         private readonly AppDbContext _context;
         private readonly CarrinhoCompra _carrinhoCompra;
@@ -37,7 +36,5 @@ namespace LanchesMac.Repositories
             }
             _context.SaveChanges();
         }
-        public IEnumerable<Pedido> Pedidos  => _context.Pedidos;
-
     }
 }
