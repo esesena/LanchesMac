@@ -41,7 +41,7 @@ namespace LanchesMac.Migrations
 
                     b.HasIndex("LancheId");
 
-                    b.ToTable("CarrinhoCompraItems");
+                    b.ToTable("CarrinhoCompraItens");
                 });
 
             modelBuilder.Entity("LanchesMac.Models.Categoria", b =>
